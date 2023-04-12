@@ -1,0 +1,38 @@
+{
+    "base-item": {
+        "title": "Base Item",
+        "description": "Choose the base item for your custom item. Use the dropdown to select the item you want to use if you want to keep right-click functionality. Otherwise, use Override Item to create a custom item that isn't capable of being right-clicked, but it can be any item you want."
+    },
+    "item-name": {
+        "title": "Item Name",
+        "description": "Set the name of your item in the text box. Use the checkboxes and color dropdown to customize the look of the text."
+    },
+    "item-description": {
+        "title": "Item Description",
+        "description": "Set the description of your item in the text box. Use the checkboxes and color dropdown to customize the look of the text."
+    },
+    "on-right-click": {
+        "title": "On Right-Click",
+        "description": "Choose what happens when the player right clicks with the item held. <br><br>None: Disables right-click functionality<br>Run Function: Runs a function that you need to write yourself<br>Run Commands: Define several commands to run when the item is right-clicked"
+    },
+    "on-hit": {
+        "title": "On Hit",
+        "description": "Choose what happens when the item is used to hit an entity.<br><br>On Victim: Run the command as the entity that got hit<br>On Attacker: Run the command as the entity that hit the other entity<br><br>Do Nothing: No commands are executed when an entity is hit<br>Run Function: Runs a function that you need to write yourself<br>Run Commands: Define several commands to run when the item is used to hit an entity"
+    },
+    "on-kill": {
+        "title": "On Kill",
+        "description": "Choose what happens when the item is used to kill an entity.<br><br>On Victim: Run the command as the entity that died<br>On Attacker: Run the command as the entity that killed the other entity<br><br>Do Nothing: No commands are executed when an entity is killed<br>Run Function: Runs a function that you need to write yourself<br>Run Commands: Define several commands to run when the item is used to hit an entity"
+    },
+    "attribute": {
+        "title": "Attributes",
+        "description": "Set various miscellaneous option for your custom item. Select an attibute from the dropdown and use the '+' button to add it to your item. Use the '-' button to remove it. Each attribute has a description that will appear when you hover over it."
+    },
+    "attributes": {
+        "damage": {
+            "title": "Damage",
+            "type": "number",
+            "default": 1,
+            "description": "Set the damage done with a fully charged attack"
+        }
+    }
+}
