@@ -172,6 +172,23 @@ h1 {
     margin-top: 10px;
 }
 
+#add-attribute {
+    background: #00aa00;
+    color: #ffffff;
+    border-radius: 0 50% 50% 0;
+    width: 18px;
+    height: 23px;
+    background-color: #00aa00;
+    border: none;
+    display: inline-block;
+
+}
+
 .attributes-grid label {
     margin-bottom: 5px;
 }
+
+#stuck-elements {
+    display: flex;
+}
+

@@ -89,6 +89,7 @@ function addAttribute() {
             div.appendChild(label)
             input.type = data.attributes[attribute].type
             input.value = data.attributes[attribute].default
+            input.step = data.attributes[attribute].scale
             div.appendChild(input)
             div.appendChild(button)
             document.getElementById('attributes-list').appendChild(div)

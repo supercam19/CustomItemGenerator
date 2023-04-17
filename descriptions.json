@@ -31,8 +31,37 @@
         "damage": {
             "title": "Damage",
             "type": "number",
-            "default": 1,
+            "scale": 1,
+            "default": 7,
             "description": "Set the damage done with a fully charged attack"
+        },
+        "attack-speed": {
+            "title": "Attack Speed",
+            "type": "number",
+            "scale": 0.1,
+            "default": 1.4,
+            "description": "Set the attack speed of the item. This is measured in attacks per second, so a value of 2 is 2 attacks per second"
+        },
+        "unbreakable": {
+            "title": "Unbreakable",
+            "type": "checkbox",
+            "scale": 1,
+            "default": false,
+            "description": "Set whether the item is unbreakable"
+        },
+        "custom-model-data": {
+            "title": "Custom Model Data",
+            "type": "number",
+            "scale": 1,
+            "default": 0,
+            "description": "Set the custom model data of the item. This is useful if you are using a resourcepack to change the appearance of the item. Specifying this value will cause the item to use the texture specified with the same number in your resourcepack"
+        },
+        "durability-max": {
+            "title": "Max Durability",
+            "type": "number",
+            "scale": 1,
+            "default": 0,
+            "description": "Set the maximum durability of the item. This is the number of times the item can be used before it breaks"
         }
     }
 }
