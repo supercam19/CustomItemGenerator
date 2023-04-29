@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label>Override item</label>
                         <div class="form-group" style="text-align: right">
-                            <input type="text" id="base-item-override" placeholder="minecraft:item" autocomplete="off" onchange="isItemOverriden()">
+                            <input type="text" id="base-item-override" placeholder="minecraft:item" autocomplete="off" onchange="window.isItemOverriden()">
                             <img src="assets/warning.png" alt="Warning" title="Setting this value will disable right-click functionality&#10Use the Base Item dropdown to keep right-click functionality">
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         <div class="form-group">
                             <label>On Right-Click</label>
                             <div class="form-group">
-                                <select id="right-click-action" onchange="rightClickMethod()" >
+                                <select id="right-click-action" onchange="window.rightClickMethod()" >
                                     <option value="none" selected>None</option>
                                     <option value="function">Run Function</option>
                                     <option value="commands">Run Commands</option>
@@ -191,7 +191,7 @@
                             </label>
                             <label for="on-kill-action">
                                 do:
-                                <select onchange="onKillMethod()" id="on-kill-action">
+                                <select onchange="window.onKillMethod()" id="on-kill-action">
                                     <option value="none" selected>Nothing</option>
                                     <option value="function">Run Function</option>
                                     <option value="commands">Run Commands</option>
@@ -216,12 +216,36 @@
                                 <option value="custom-model-data">Custom Model Data</option>
                                 <option value="durability-max">Max Durability</option>
                             
-                                <input type="button" value="+" onclick="addAttribute()" id="add-attribute">
+                                <input type="button" value="+" onclick="window.addAttribute()" id="add-attribute">
                             </select>
                         </div>
                     </div>
                     <div class="attributes-grid" id="attributes-list">
-            
+                        <div class="attribute" id="damage-div">
+                            <label>Damage:</label>
+                            <input type="number" id="damage" value="0">
+                            <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
+                        </div>
+                        <div class="attribute" id="attack-speed-div">
+                            <label>Attack Speed:</label>
+                            <input type="number" id="attack-speed" value="0">
+                            <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
+                        </div>
+                        <div class="attribute" id="unbreakable-div">
+                            <label>Unbreakable:</label>
+                            <input type="checkbox" id="unbreakable" value="true">
+                            <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
+                        </div>
+                        <div class="attribute" id="custom-model-data-div">
+                            <label>Custom Model Data:</label>
+                            <input type="number" id="custom-model-data" value="0">
+                            <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
+                        </div>
+                        <div class="attribute" id="durability-max-div">
+                            <label>Max Durability:</label>
+                            <input type="number" id="durability-max" value="0">
+                            <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -231,7 +255,7 @@
                     <h2 id="configuration-name"></h2>
                     <p id="description-text"></p>
                 </div>        
-                <input type="button" value="Generate" onclick="generatePack()" id="generate-pack">
+                <input type="button" value="Generate" onclick="window.generatePack()" id="generate-pack">
             </div>
         </div>
     </body>

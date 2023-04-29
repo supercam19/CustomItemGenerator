@@ -36,11 +36,15 @@ window.generatePack = function() {
     let on_kill_action = document.getElementById("on-kill-action").value;
     let on_kill_function = document.getElementById("on-kill-function").value;
     let on_kill_commands = document.getElementById("on-kill-commands").value;
+    
+
+
+
     let damage = document.getElementById("damage").value;
     let attack_speed = document.getElementById("attack-speed").value;
     let unbreakable = document.getElementById("unbreakable").checked;
     let custom_model_data = document.getElementById("custom-model-data").value;
-    let max_durability = document.getElementById("max-durability").value;
+    let max_durability = document.getElementById("durability-max").value;
 
     let pack = zip.folder("custom-item");
     let data = zip.folder("data");
@@ -100,13 +104,19 @@ window.generatePack = function() {
         let true_base_item = base_item
     }
     let give_item = "give @s ${true_base_item} 1 {display:{Name:'{\"text\":\"${item_name}\",\"bold\":${item_name_bold},\"italic\":${item_name_italic},\"underlined\":${item_name_underline},\"strikethrough\":${item_name_strikethrough},\"obfuscated\":${item_name_obfuscated},\"color\":\"${item_name_color}\"}',Lore:['{\"text\":\"${item_desc}\",\"bold\":${item_desc_bold},\"italic\":${item_desc_italic},\"underlined\":${item_desc_underline},\"strikethrough\":${item_desc_strikethrough},\"obfuscated\":${item_desc_obfuscated},\"color\":\"${item_desc_color}\"}']},CustomModelData:${cutom_model_data},{Unbreakable:${unbreakable}b}, AttributeModifiers:[{AttributeName:\"generic.attack_damage\",Name:\"generic.attack_damage\",Amount:${damage},Operation:0,UUIDLeast:1,UUIDMost:1},{AttributeName:\"generic.attack_speed\",Name:\"generic.attack_speed\",Amount:${attack_speed},Operation:0,UUIDLeast:1,UUIDMost:1}],Damage:${max_durability} id:\"${item_name}\"}"
-    let func_give = functions.file("give.mcfunction", JSON.stringifyz(give_item))
-    
-    window.URL.createObjectURL(zip.generateAsync({type:"blob"})).then(function(url) {
+    let func_give = functions.file("give.mcfunction", JSON.stringify(give_item))
+    zip.generateAsync({type: "blob"}).then(function(blob) {
+        let url = URL.createObjectURL(blob);
         let link = document.createElement("a");
         link.download = "custom-item.zip";
         link.href = url;
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }).catch(function(error) {
+        // Handle any errors here
+        console.error(error);
     });
     
 }
@@ -130,7 +140,7 @@ function changeDescription(key, attribute=false) {
         })
 }
 
-function functionalityManager(selection, div, label, input, textarea) {
+window.functionalityManager = function(selection, div, label, input, textarea) {
     // Manages the functionality of configurables with run function/commands
     let value = selection.options[selection.selectedIndex].value
     if (value == "none") {
@@ -160,7 +170,7 @@ function functionalityManager(selection, div, label, input, textarea) {
     }
 }
 
-function rightClickMethod() {
+window.rightClickMethod = function() {
     let selection = document.getElementById('right-click-action')
     let label = document.getElementById('right-click-command-label')
     let input = document.getElementById('right-click-function')
@@ -169,7 +179,7 @@ function rightClickMethod() {
     functionalityManager(selection, div, label, input, textarea)
 }
 
-function onHitMethod() {
+window.onHitMethod = function() {
     let selection = document.getElementById('on-hit-action')
     let label = document.getElementById('on-hit-command-label')
     let input = document.getElementById('on-hit-function')
@@ -178,7 +188,7 @@ function onHitMethod() {
     functionalityManager(selection, div, label, input, textarea)
 }
 
-function onKillMethod() {
+window.onKillMethod = function() {
     let selection = document.getElementById('on-kill-action')
     let label = document.getElementById('on-kill-command-label')
     let input = document.getElementById('on-kill-function')
@@ -187,7 +197,7 @@ function onKillMethod() {
     functionalityManager(selection, div, label, input, textarea)
 }
 
-function addAttribute() {
+window.addAttribute = function() {
     let attribute = document.getElementById('attribute-selection').value
     let div = document.createElement('div')
     let label = document.createElement('label')
@@ -200,33 +210,30 @@ function addAttribute() {
     const json = fetch("descriptions.json")
         .then(response => response.json())
         .then(data => {
-            label.textContent = data.attributes[attribute].title
-            div.appendChild(label)
-            input.type = data.attributes[attribute].type
-            input.value = data.attributes[attribute].default
-            input.id = attribute
-            input.step = data.attributes[attribute].scale
-            div.appendChild(input)
-            div.appendChild(button)
-            document.getElementById('attributes-list').appendChild(div)
-            div.addEventListener('mouseover', function() {changeDescription(attribute, true); div.style.background = "#303030"})
-            div.addEventListener('mouseout', function() {div.style.background = "#2b2b2b"})
+            let atrElement = document.getElementById(attribute + "-div")
+            atrElement.style.display = "block"
+            
         })  
 }
 
-function isItemOverriden() {
+window.isItemOverriden = function() {
     let textbox = document.getElementById('base-item-override')
     let rightClickSelection = document.getElementById('right-click-action')
     if (textbox.value != "") {
         rightClickSelection.selectedIndex = 0
         rightClickSelection.disabled = true
-        rightClickMethod()
+        window.rightClickMethod()
         document.getElementById('no-right-click-warn').style.display = "block"
     }
     else {
         rightClickSelection.disabled = false
         document.getElementById('no-right-click-warn').style.display = "none"
     }
+}
+
+window.removeAttribute = function(element) {
+    element.value = "none"
+    element.parentElement.style.display = "none"
 }
 
 document.addEventListener('DOMContentLoaded', function() {
