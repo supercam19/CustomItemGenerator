@@ -16,196 +16,197 @@
         </div>
         <div id="main">
             <div id="left">
-                <div id="configuration-base-item">
-                    <div class="form-group">
-                        <label>Base Item</label>
-                        <select id="base-item">
-                            <option value="carrot_on_a_stick">Carrot on a Stick</option>
-                            <option value="warped_fungus_on_a_stick">Warped Fungus on a Stick</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Override item</label>
-                        <div class="form-group" style="text-align: right">
-                            <input type="text" id="base-item-override" placeholder="minecraft:item" autocomplete="off" onchange="window.isItemOverriden()">
-                            <img src="assets/warning.png" alt="Warning" title="Setting this value will disable right-click functionality&#10Use the Base Item dropdown to keep right-click functionality">
-                        </div>
-                    </div>
-                </div>
-
-                <div id="configuration-item-name">
-                    <div class="form-group">
-                        <label for="name">Item Name:</label>
-                        <input type="text" id="name" placeholder="Item Name" autocomplete="off">
-                    </div>
-                    <div id="name-style" class="text-properties">
-                        <label>
-                            <input type="checkbox" id="name-style-bold" value="Option 1">
-                            Bold
-                        </label>
-                        <label>
-                            <input type="checkbox" id="name-style-italic" value="Option 2">
-                            Italic
-                        </label>
-                        <label>
-                            <input type="checkbox" id="name-style-underline" value="Option 3">
-                            Underline
-                        </label>
-                        <label>
-                            <input type="checkbox" id="name-style-strikethrough" value="Option 4">
-                            Strikethrough
-                        </label>
-                        <label>
-                            <input type="checkbox" id="name-style-obfuscated" value="Option 5">
-                            Obfuscated
-                        </label>
-                        <label>
-                            Color:
-                            <select id="name-style-color">
-                                <option value="white">White</option>
-                                <option value="black">Black</option>
-                                <option value="dark_blue">Dark Blue</option>
-                                <option value="dark_green">Dark Green</option>
-                                <option value="dark_aqua">Dark Aqua</option>
-                                <option value="dark_red">Dark Red</option>
-                                <option value="dark_purple">Dark Purple</option>
-                                <option value="gold">Gold</option>
-                                <option value="gray">Gray</option>
-                                <option value="dark_gray">Dark Gray</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                                <option value="aqua">Aqua</option>
-                                <option value="red">Red</option>
-                                <option value="light_purple">Light Purple</option>
-                                <option value="yellow">Yellow</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-                <div id="configuration-item-description">
-                    <div class="form-group">
-                        <label for="description">Item Description:</label>
-                        <input type="text" id="description" placeholder="Item Description" autocomplete="off">
-                    </div>
-                    <div id="desc-style" class="text-properties">
-                        <label>
-                            <input type="checkbox" id="desc-style-bold" value="Option 1">
-                            Bold
-                        </label>
-                        <label>
-                            <input type="checkbox" id="desc-style-italic" value="Option 2">
-                            Italic
-                        </label>
-                        <label>
-                            <input type="checkbox" id="desc-style-underline" value="Option 3">
-                            Underline
-                        </label>
-                        <label>
-                            <input type="checkbox" id="desc-style-strikethrough" value="Option 4">
-                            Strikethrough
-                        </label>
-                        <label>
-                            <input type="checkbox" id="desc-style-obfuscated" value="Option 5">
-                            Obfuscated
-                        </label>
-                        <label>
-                            Color:
-                            <select id="desc-style-color">
-                                <option value="white">White</option>
-                                <option value="black">Black</option>
-                                <option value="dark_blue">Dark Blue</option>
-                                <option value="dark_green">Dark Green</option>
-                                <option value="dark_aqua">Dark Aqua</option>
-                                <option value="dark_red">Dark Red</option>
-                                <option value="dark_purple">Dark Purple</option>
-                                <option value="gold">Gold</option>
-                                <option value="gray">Gray</option>
-                                <option value="dark_gray">Dark Gray</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                                <option value="aqua">Aqua</option>
-                                <option value="red">Red</option>
-                                <option value="light_purple">Light Purple</option>
-                                <option value="yellow">Yellow</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-                <div id="configuration-right-click">
-                    <div>
+                <div style="direction: rtl; overflow-y: scroll; height: 100%;">
+                    <div id="configuration-base-item" style="direction: ltr;">
                         <div class="form-group">
-                            <label>On Right-Click</label>
-                            <div class="form-group">
-                                <select id="right-click-action" onchange="window.rightClickMethod()" >
-                                    <option value="none" selected>None</option>
-                                    <option value="function">Run Function</option>
-                                    <option value="commands">Run Commands</option>
-                                </select>
-                                <img src="assets/warning.png" alt="Warning" title="Right-click functionality is disabled because you set an override item" id="no-right-click-warn">
+                            <label>Base Item</label>
+                            <select id="base-item">
+                                <option value="carrot_on_a_stick">Carrot on a Stick</option>
+                                <option value="warped_fungus_on_a_stick">Warped Fungus on a Stick</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Override item</label>
+                            <div class="form-group" style="text-align: right">
+                                <input type="text" id="base-item-override" placeholder="minecraft:item" autocomplete="off" onchange="window.isItemOverriden()">
+                                <img src="assets/warning.png" alt="Warning" title="Setting this value will disable right-click functionality&#10Use the Base Item dropdown to keep right-click functionality">
                             </div>
                         </div>
-                        <div class="functionality-common" id="right-click-functionality">
-                            <label id="right-click-command-label">Function:</label>
-                            <input type="text" id="right-click-function" placeholder="namespace:path/function">
-                            <textarea id="right-click-commands" placeholder="say put multiple commands here&#10give @s diamond&#10execute if score @s test matches 1 run summon lightning"></textarea>
+                    </div>
+
+                    <div id="configuration-item-name" style="direction: ltr;">
+                        <div class="form-group">
+                            <label for="name">Item Name:</label>
+                            <input type="text" id="name" placeholder="Item Name" autocomplete="off">
+                        </div>
+                        <div id="name-style" class="text-properties">
+                            <label>
+                                <input type="checkbox" id="name-style-bold" value="Option 1">
+                                Bold
+                            </label>
+                            <label>
+                                <input type="checkbox" id="name-style-italic" value="Option 2">
+                                Italic
+                            </label>
+                            <label>
+                                <input type="checkbox" id="name-style-underline" value="Option 3">
+                                Underline
+                            </label>
+                            <label>
+                                <input type="checkbox" id="name-style-strikethrough" value="Option 4">
+                                Strikethrough
+                            </label>
+                            <label>
+                                <input type="checkbox" id="name-style-obfuscated" value="Option 5">
+                                Obfuscated
+                            </label>
+                            <label>
+                                Color:
+                                <select id="name-style-color">
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="dark_blue">Dark Blue</option>
+                                    <option value="dark_green">Dark Green</option>
+                                    <option value="dark_aqua">Dark Aqua</option>
+                                    <option value="dark_red">Dark Red</option>
+                                    <option value="dark_purple">Dark Purple</option>
+                                    <option value="gold">Gold</option>
+                                    <option value="gray">Gray</option>
+                                    <option value="dark_gray">Dark Gray</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="aqua">Aqua</option>
+                                    <option value="red">Red</option>
+                                    <option value="light_purple">Light Purple</option>
+                                    <option value="yellow">Yellow</option>
+                                </select>
+                            </label>
                         </div>
                     </div>
-                </div>
-                <div id="configuration-on-hit">
-                    <div class="form-group">
-                        <label>On Hit:</label>
+                    <div id="configuration-item-description" style="direction: ltr;">
+                        <div class="form-group">
+                            <label for="description">Item Description:</label>
+                            <input type="text" id="description" placeholder="Item Description" autocomplete="off">
+                        </div>
+                        <div id="desc-style" class="text-properties">
+                            <label>
+                                <input type="checkbox" id="desc-style-bold" value="Option 1">
+                                Bold
+                            </label>
+                            <label>
+                                <input type="checkbox" id="desc-style-italic" value="Option 2">
+                                Italic
+                            </label>
+                            <label>
+                                <input type="checkbox" id="desc-style-underline" value="Option 3">
+                                Underline
+                            </label>
+                            <label>
+                                <input type="checkbox" id="desc-style-strikethrough" value="Option 4">
+                                Strikethrough
+                            </label>
+                            <label>
+                                <input type="checkbox" id="desc-style-obfuscated" value="Option 5">
+                                Obfuscated
+                            </label>
+                            <label>
+                                Color:
+                                <select id="desc-style-color">
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="dark_blue">Dark Blue</option>
+                                    <option value="dark_green">Dark Green</option>
+                                    <option value="dark_aqua">Dark Aqua</option>
+                                    <option value="dark_red">Dark Red</option>
+                                    <option value="dark_purple">Dark Purple</option>
+                                    <option value="gold">Gold</option>
+                                    <option value="gray">Gray</option>
+                                    <option value="dark_gray">Dark Gray</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="aqua">Aqua</option>
+                                    <option value="red">Red</option>
+                                    <option value="light_purple">Light Purple</option>
+                                    <option value="yellow">Yellow</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="configuration-right-click" style="direction: ltr;">
                         <div>
-                            <label for="on-hit-targeter">
-                                On:
-                                <select>
-                                    <option value="victim">Victim</option>
-                                    <option value="attacker">Attacker</option>   
-                                </select>
-                            </label>
-                            <label for="on-hit-action">
-                                do:
-                                <select onchange="onHitMethod()" id="on-hit-action">
-                                    <option value="none" selected>Nothing</option>
-                                    <option value="function">Run Function</option>
-                                    <option value="commands">Run Commands</option>
-                                </select>
-                            </label>
+                            <div class="form-group">
+                                <label>On Right-Click</label>
+                                <div class="form-group">
+                                    <select id="right-click-action" onchange="window.rightClickMethod()" >
+                                        <option value="none" selected>None</option>
+                                        <option value="function">Run Function</option>
+                                        <option value="commands">Run Commands</option>
+                                    </select>
+                                    <img src="assets/warning.png" alt="Warning" title="Right-click functionality is disabled because you set an override item" id="no-right-click-warn">
+                                </div>
+                            </div>
+                            <div class="functionality-common" id="right-click-functionality">
+                                <label id="right-click-command-label">Function:</label>
+                                <input type="text" id="right-click-function" placeholder="namespace:path/function">
+                                <textarea id="right-click-commands" placeholder="say put multiple commands here&#10give @s diamond&#10execute if score @s test matches 1 run summon lightning"></textarea>
+                            </div>
                         </div>
                     </div>
-                    <div id="on-hit-functionality" class="functionality-common">
-                        <label id="on-hit-command-label">Function:</label>
-                        <input type="text" id="on-hit-function" placeholder="namespace:path/function">
-                        <textarea id="on-hit-commands" placeholder="say put multiple commands here&#10give @s diamond&#10execute if score @s test matches 1 run summon lightning"></textarea>
-                    </div>
-                </div>
-                <div id="configuration-on-kill">
-                    <div class="form-group">
-                        <label>On Kill:</label>
-                        <div>
-                            <label for="on-kill-targeter">
-                                On:
-                                <select id="on-kill-targeter">
-                                    <option value="victim">Victim</option>
-                                    <option value="attacker">Attacker</option>   
-                                </select>
-                            </label>
-                            <label for="on-kill-action">
-                                do:
-                                <select onchange="window.onKillMethod()" id="on-kill-action">
-                                    <option value="none" selected>Nothing</option>
-                                    <option value="function">Run Function</option>
-                                    <option value="commands">Run Commands</option>
-                                </select>
-                            </label>
+                    <div id="configuration-on-hit" style="direction: ltr;">
+                        <div class="form-group">
+                            <label>On Hit:</label>
+                            <div>
+                                <label for="on-hit-targeter">
+                                    On:
+                                    <select>
+                                        <option value="victim">Victim</option>
+                                        <option value="attacker">Attacker</option>   
+                                    </select>
+                                </label>
+                                <label for="on-hit-action">
+                                    do:
+                                    <select onchange="onHitMethod()" id="on-hit-action">
+                                        <option value="none" selected>Nothing</option>
+                                        <option value="function">Run Function</option>
+                                        <option value="commands">Run Commands</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="on-hit-functionality" class="functionality-common">
+                            <label id="on-hit-command-label">Function:</label>
+                            <input type="text" id="on-hit-function" placeholder="namespace:path/function">
+                            <textarea id="on-hit-commands" placeholder="say put multiple commands here&#10give @s diamond&#10execute if score @s test matches 1 run summon lightning"></textarea>
                         </div>
                     </div>
-                    <div id="on-kill-functionality" class="functionality-common">
-                        <label id="on-kill-command-label">Function:</label>
-                        <input type="text" id="on-kill-function" placeholder="namespace:path/function">
-                        <textarea id="on-kill-commands" placeholder="say put multiple commands here&#10give @s diamond&#10execute if score @s test matches 1 run summon lightning"></textarea>
+                    <div id="configuration-on-kill" style="direction: ltr;">
+                        <div class="form-group">
+                            <label>On Kill:</label>
+                            <div>
+                                <label for="on-kill-targeter">
+                                    On:
+                                    <select id="on-kill-targeter">
+                                        <option value="victim">Victim</option>
+                                        <option value="attacker">Attacker</option>   
+                                    </select>
+                                </label>
+                                <label for="on-kill-action">
+                                    do:
+                                    <select onchange="window.onKillMethod()" id="on-kill-action">
+                                        <option value="none" selected>Nothing</option>
+                                        <option value="function">Run Function</option>
+                                        <option value="commands">Run Commands</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="on-kill-functionality" class="functionality-common">
+                            <label id="on-kill-command-label">Function:</label>
+                            <input type="text" id="on-kill-function" placeholder="namespace:path/function">
+                            <textarea id="on-kill-commands" placeholder="say put multiple commands here&#10give @s diamond&#10execute if score @s test matches 1 run summon lightning"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div id="configuration-attributes-master" >
+                    <div id="configuration-attributes-master" style="direction: ltr;">
                     <div class="form-group" id="configuration-attributes">
                         <label>Attributes</label>
                         <div>
@@ -247,6 +248,7 @@
                             <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
                         </div>
                     </div>
+                    </div>
                 </div>
             </div>
             <div id="right" class="vert-align">
@@ -255,8 +257,9 @@
                     <h2 id="configuration-name"></h2>
                     <p id="description-text"></p>
                 </div>        
-                <input type="button" value="Generate" onclick="window.generatePack()" id="generate-pack">
+                
             </div>
+            <input type="button" value="&#x21E9 Download Datapack" onclick="window.generatePack()" id="generate-pack">
         </div>
     </body>
 </html>
