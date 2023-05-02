@@ -224,17 +224,17 @@
                     <div class="attributes-grid" id="attributes-list">
                         <div class="attribute" id="damage-div">
                             <label>Damage:</label>
-                            <input type="number" id="damage" value="0">
+                            <input type="number" id="damage" value="7" min="0">
                             <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
                         </div>
                         <div class="attribute" id="attack-speed-div">
                             <label>Attack Speed:</label>
-                            <input type="number" id="attack-speed" value="0">
+                            <input type="number" id="attack-speed" value="1.4" step="0.1" min="0">
                             <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
                         </div>
                         <div class="attribute" id="unbreakable-div">
                             <label>Unbreakable:</label>
-                            <input type="checkbox" id="unbreakable" value="true">
+                            <input type="checkbox" id="unbreakable" value="false">
                             <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
                         </div>
                         <div class="attribute" id="custom-model-data-div">
@@ -244,7 +244,7 @@
                         </div>
                         <div class="attribute" id="durability-max-div">
                             <label>Max Durability:</label>
-                            <input type="number" id="durability-max" value="0">
+                            <input type="number" id="durability-max" value="0" min="0">
                             <input type="button" value="X" onclick="window.removeAttribute(this)" class="remove-attribute">
                         </div>
                     </div>

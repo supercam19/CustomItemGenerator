@@ -4,9 +4,15 @@ import "./public/lib/jszip/dist/jszip.js";
 
 export const zip = new JSZip();
 
+var UUID = [Math.random() * 10000, Math.random() * 10000, Math.random() * 10000, Math.random() * 10000]
+
 window.generatePack = function() {
     let item_name = document.getElementById("name").value;
     let code_name = item_name.replace(" ", "_").toLowerCase();
+    // check if code name has the regex [A-Za-z0-9]
+    if (!code_name.match(/^[A-Za-z0-9_]+$/)) {
+        code_name = "custom_item"
+    }
     let item_name_bold = document.getElementById("name-style-bold").checked;
     let item_name_italic = document.getElementById("name-style-italic").checked;
     let item_name_underline = document.getElementById("name-style-underline").checked;
@@ -117,8 +123,8 @@ window.generatePack = function() {
         true_base_item = override_item
     }
     
-    let give_item = `give @s ${true_base_item} 1 {display:{Name:'{\"text\":\"${item_name}\",\"bold\":${item_name_bold},\"italic\":${item_name_italic},\"underlined\":${item_name_underline},\"strikethrough\":${item_name_strikethrough},\"obfuscated\":${item_name_obfuscated},\"color\":\"${item_name_color}\"}',Lore:['{\"text\":\"${item_desc}\",\"bold\":${item_desc_bold},\"italic\":${item_desc_italic},\"underlined\":${item_desc_underline},\"strikethrough\":${item_desc_strikethrough},\"obfuscated\":${item_desc_obfuscated},\"color\":\"${item_desc_color}\"}']},CustomModelData:${custom_model_data},{Unbreakable:${unbreakable}b}, AttributeModifiers:[{AttributeName:\"generic.attack_damage\",Name:\"generic.attack_damage\",Amount:${damage},Operation:0,UUIDLeast:1,UUIDMost:1},{AttributeName:\"generic.attack_speed\",Name:\"generic.attack_speed\",Amount:${attack_speed},Operation:0,UUIDLeast:1,UUIDMost:1}],Damage:${max_durability} id:\"${code_name}\"}`
-    let func_give = functions.file("give.mcfunction", JSON.stringify(give_item))
+    let give_item = `give @s ${true_base_item}{display:{Name:'{"text":"${item_name}","bold":${item_name_bold},"italic":${item_name_italic},"underlined":${item_name_underline},"strikethrough":${item_name_strikethrough},"obfuscated":${item_name_obfuscated},"color":"${item_name_color}"}',Lore:['{"text":"${item_desc}","bold":${item_desc_bold},"italic":${item_desc_italic},"underlined":${item_desc_underline},"strikethrough":${item_desc_strikethrough},"obfuscated":${item_desc_obfuscated},"color":"${item_desc_color}"}']},CustomModelData:${custom_model_data},Unbreakable:${+unbreakable}b, AttributeModifiers:[{AttributeName:"generic.attack_damage",Name:"generic.attack_damage",Amount:${damage},Operation:0, Slot:mainhand, UUID:${window.UUID_toString()}},{AttributeName:"generic.attack_speed",Name:"generic.attack_speed",Amount:${attack_speed},Operation:0, Slot:mainhand, UUID:${window.UUID_toString()}}],Damage:${max_durability}, id:"${code_name}"}`
+    let func_give = functions.file("give.mcfunction", give_item)
     zip.generateAsync({type: "blob"}).then(function(blob) {
         let url = URL.createObjectURL(blob);
         let link = document.createElement("a");
@@ -134,7 +140,14 @@ window.generatePack = function() {
     
 }
 
-
+window.UUID_toString = function() {
+    let UUID = []
+    for (let i = 0; i < 4; i++) {
+        UUID.push(Math.floor(Math.random() * 2147483647))
+    }
+    let asString = `[I;${UUID[0]}, ${UUID[1]}, ${UUID[2]}, ${UUID[3]}]`
+    return asString
+}
 
 function changeDescription(key, attribute=false) {
     let title = document.getElementById("configuration-name")
@@ -258,6 +271,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let on_hit = document.getElementById("configuration-on-hit")
     let on_kill = document.getElementById("configuration-on-kill")
     let attributes = document.getElementById("configuration-attributes")
+    let damage = document.getElementById("damage-div")
+    let attack_speed = document.getElementById("attack-speed-div")
+    let unbreakable = document.getElementById("unbreakable-div")
+    let custom_model_data = document.getElementById("custom-model-data-div")
+    let max_durability = document.getElementById("durability-max-div")
     let download = document.getElementById("generate-pack")
     base_item.addEventListener('mouseover', function() {changeDescription("base-item"); base_item.style.background = "#303030"})
     base_item.addEventListener('mouseout', function() {base_item.style.background = "#2b2b2b"})
@@ -273,6 +291,18 @@ document.addEventListener('DOMContentLoaded', function() {
     on_kill.addEventListener('mouseout', function() {on_kill.style.background = "#2b2b2b"})
     attributes.addEventListener('mouseover', function() {changeDescription("attribute"); attributes.style.background = "#303030"})
     attributes.addEventListener('mouseout', function() {attributes.style.background = "#2b2b2b"})
+    
+    damage.addEventListener('mouseover', function() {changeDescription("damage", true); damage.style.background = "#303030"})
+    damage.addEventListener('mouseout', function() {damage.style.background = "#2b2b2b"})
+    attack_speed.addEventListener('mouseover', function() {changeDescription("attack-speed", true); attack_speed.style.background = "#303030"})
+    attack_speed.addEventListener('mouseout', function() {attack_speed.style.background = "#2b2b2b"})
+    unbreakable.addEventListener('mouseover', function() {changeDescription("unbreakable", true); unbreakable.style.background = "#303030"})
+    unbreakable.addEventListener('mouseout', function() {unbreakable.style.background = "#2b2b2b"})
+    custom_model_data.addEventListener('mouseover', function() {changeDescription("custom-model-data", true); custom_model_data.style.background = "#303030"})
+    custom_model_data.addEventListener('mouseout', function() {custom_model_data.style.background = "#2b2b2b"})
+    max_durability.addEventListener('mouseover', function() {changeDescription("durability-max", true); max_durability.style.background = "#303030"})
+    max_durability.addEventListener('mouseout', function() {max_durability.style.background = "#2b2b2b"})
+
     download.addEventListener('mouseover', function() {download.style.background = "#0077aa"})
     download.addEventListener('mouseout', function() {download.style.background = "#0099cc"})
 
