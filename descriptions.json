@@ -33,21 +33,21 @@
             "type": "number",
             "scale": 1,
             "default": 7,
-            "description": "Set the damage done with a fully charged attack"
+            "description": "The amount of damage added on to a fully charged attack. Most items have 1 by default, and tools have more. A diamond sword has 7."
         },
         "attack-speed": {
             "title": "Attack Speed",
             "type": "number",
             "scale": 0.1,
             "default": 1.4,
-            "description": "Set the attack speed of the item. This is measured in attacks per second, so a value of 2 is 2 attacks per second"
+            "description": "The amount of times per second an attack can be fully charged. Most items have 4 by default, and tools have less. A diamond sword has 1.4."
         },
         "unbreakable": {
             "title": "Unbreakable",
             "type": "checkbox",
             "scale": 1,
             "default": false,
-            "description": "Set whether the item is unbreakable"
+            "description": "Set wether the item can loose durability or not."
         },
         "custom-model-data": {
             "title": "Custom Model Data",
