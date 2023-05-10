@@ -65,10 +65,10 @@ window.generatePack = function() {
     let namespace = data.folder(code_name)
     let functions = namespace.folder("functions")
     if (right_click_action == "commands") {
-        let func_right_click = functions.file("right_click.mcfunction", document.getElementById("right-click-commands").value)
+        let func_right_click = functions.file("right_click.mcfunction", document.getElementById("right-click-commands").value + `\nscoreboard players @a set ${code_name}_rcd 0`)
         let right_click_method = "function custom-item:right_click"
         let func_load = functions.file("load.mcfunction", `scoreboard objectives add ${code_name}_rcd minecraft.used:minecraft.${base_item}`)
-        let func_tick = functions.file(`tick.mcfunction", "execute as @a if score @s ${code_name}_rcd matches 1.. run ${right_click_method}`)
+        let func_tick = functions.file("tick.mcfunction", `execute as @a if score @s ${code_name}_rcd matches 1.. run ${right_click_method}`)
     }
     else if (right_click_action == "function") {
         let right_click_method = "function " + document.getElementById("right-click-function").value
@@ -138,6 +138,21 @@ window.generatePack = function() {
         console.error(error);
     });
     
+}
+
+window.debug = function() {
+    // fill input fields with values to quickly test the generator
+    document.getElementById("name").value = "Test Item"
+    document.getElementById("description").value = "This is a test item"
+    document.getElementById("damage").value = "5"
+    document.getElementById("attack-speed").value = "1"
+    document.getElementById("durability-max").value = "10"
+    document.getElementById("right-click-commands").value = "say Right click!"
+    document.getElementById("on-hit-commands").value = "say Hit!"
+    document.getElementById("on-kill-commands").value = "say Kill!"
+    document.getElementById("right-click-action").value = "commands"
+    document.getElementById("on-hit-action").value = "commands"
+    document.getElementById("on-kill-action").value = "commands"
 }
 
 window.UUID_toString = function() {
