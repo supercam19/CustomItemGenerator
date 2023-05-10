@@ -142,7 +142,7 @@ window.generatePack = function() {
     zip.generateAsync({type: "blob"}).then(function(blob) {
         let url = URL.createObjectURL(blob);
         let link = document.createElement("a");
-        link.download = "custom-item.zip";
+        link.download = `${code_name}.zip`;
         link.href = url;
         document.body.appendChild(link);
         link.click();

@@ -61,7 +61,7 @@
             "type": "number",
             "scale": 1,
             "default": 0,
-            "description": "Set the maximum durability of the item. This is the number of times the item can be used before it breaks"
+            "description": "Set the amount of durability taken from its maximum."
         }
     }
 }
