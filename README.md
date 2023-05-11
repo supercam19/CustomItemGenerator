@@ -8,3 +8,5 @@ Once you have configured all the options for your item and are ready to put it i
 
 (replace {item_name} with what you named your item, but remember that spaces are replaced with underscores)
 This will give you the item in game, and everything is done!
+
+### Warning! May experience visual issues on non-Chromium based browsers!
